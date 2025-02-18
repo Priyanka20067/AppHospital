@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const MainScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topRightContainer}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={require('../assets/image/Icons.png')} style={styles.arrow} />
         </TouchableOpacity>
         <Text style={styles.skip} onPress={() => navigation.navigate('Join')}>Skip</Text>
@@ -37,110 +38,95 @@ const MainScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1 ,
-      backgroundColor: '#0000001A',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding:20,
-     
-      fontFamily:'Nunito',
-    },
-topRightContainer: {
-  display:'flex',
-  flexDirection: 'row',
-  alignItems: 'center', 
- marginTop:-90,
- padding:30,
-  
-},
-arrow: {
-  height:32,
-   width:34,
-   display:'block',
-   marginRight:255,
-   marginLeft:-10,  
-},
-skip: {
-
-  fontSize: 18,
-  color: 'black', 
-  
-},
-    card: {
-      backgroundColor:'#fff', 
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignSelf:'center',
-      width: 320,
-      height:560,
-      gap:16,
-      position:'relative',
-    },
-  position:{
-    position:'absolute',
-    bottom:76,
-    
+    flex: 1,
+    backgroundColor: '#0000001A',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: wp(5),
+    fontFamily: 'Nunito',
+  },
+  topRightContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(-10),
+    padding: wp(7.5),
+  },
+  arrow: {
+    height: hp(4),
+    width: wp(8.5),
+    display: 'block',
+    marginRight: wp(63),
+    marginLeft: wp(-2.5),
+  },
+  skip: {
+    fontSize: wp(4.5),
+    color: 'black',
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: wp(80),
+    height: hp(70),
+    gap: hp(2),
+    position: 'relative',
+  },
+  position: {
+    position: 'absolute',
+    bottom: hp(11.4),
   },
   image: {
-    width: 230,
-    height: 230,
-    marginBottom: 20,
+    width: wp(57.5),
+    height: wp(57.5),
+    marginBottom: hp(2.5),
   },
   heading: {
-    fontSize: 28,
+    fontSize: wp(7),
     color: '#333',
     textAlign: 'center',
-    marginBottom: 10,
-    letterSpacing:0.5,
-  },
-  headingsub: {
-    fontSize: 24,
-    letterSpacing:0.5,
-    color: '#333',
-    textAlign: 'center',
-    marginTop:-18,
-    fontWeight:'bold',
+    marginBottom: hp(1.5),
+    letterSpacing: wp(0.1),
   },
   description: {
-    fontSize: 18,
+    fontSize: wp(4.5),
     color: '#666',
     textAlign: 'center',
-    marginBottom: 80,
-    marginTop:-18,
-    width:304,
+    marginBottom: hp(10),
+    width: wp(76),
   },
   pagination: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: hp(2.5),
   },
   dot: {
-    height: 8,
-    width: 10,
-    borderRadius: 4,
+    height: hp(1),
+    width: wp(2.5),
+    borderRadius: wp(1),
     backgroundColor: '#CCC',
-    marginHorizontal: 5,
+    marginHorizontal: wp(1.25),
   },
   activeDot: {
     backgroundColor: '#67940069',
-    width:50,
+    width: wp(12.5),
   },
   arrowButton: {
-    marginTop: 20,
-    backgroundColor: '#67940069', 
-    marginLeft:35,
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    justifyContent:'center',
-    alignItems:'center',
-    
+    marginTop: hp(2.5),
+    backgroundColor: '#67940069',
+    marginLeft: wp(8.75),
+    height: wp(12.5),
+    width: wp(12.5),
+    borderRadius: wp(6.25),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   nextText: {
-    height:32,
-  width:32,
-  color: '#FFFFFF',
-  marginBottom:3,
+    height: wp(8),
+    width: wp(8),
+    color: '#FFFFFF',
+    marginBottom: hp(0.5),
   },
 });
 

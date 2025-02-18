@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const OnboardingScreen = ({ navigation }) => {
   return (
@@ -33,97 +34,91 @@ const OnboardingScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 3 ,
-      backgroundColor: '#0000001A',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding:20,
-     
-      
-    },
-    card: {
-      backgroundColor:'#fff',
-      paddingTop:32,
-      paddingBottom:32,
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignSelf:'center',
-      width: 304,
-      height:560,
-     
-      position:'relative',
-    },
-    position:{
-      position:'absolute',
-      bottom:76,
-      
-    },
-    flexDirection:{
-   display:'flex',
-   flexDirection:'row',
-   justifyContent:'center',
-   alignItems:'center',
-   marginTop:4,
-  
-    },
-    title: {
-      fontSize: 48,
-      color: 'black',
-      fontFamily:'Nunito',
-      marginTop:-45,
-    },
-    Image: {
-  width:48,
-  height:36,
-    },
-    brandName: {
-      fontSize: 48,
-      color: 'black',
-      fontFamily:'Nunito',
-      paddingLeft:8,
-    },
-    subtitle: {
-      fontSize: 18,
-      color: '#666',
-      textAlign: 'center',
-      marginTop: 10,
-      fontFamily:'Nunito',
-      gap:4,
-    },
-    pagination: {
-      flexDirection: 'row',
-      marginTop: 20,
-    },
-    dot: {
-      height: 8,
-      width: 10,
-      borderRadius: 4,
-      backgroundColor: '#CCC',
-      marginHorizontal: 5,
-    },
-    activeDot: {
-      backgroundColor: '#67940069',
-      width:50,
-    },
-    arrowButton: {
-      marginTop: 20,
-      backgroundColor: '#67940069', 
-      marginLeft:35,
-      height: 50,
-      width: 50,
-      borderRadius: 25,
-      justifyContent:'center',
-      alignItems:'center',
-      
-    },
-    nextText: {
-     height:32,
-  width:32,
-  color: '#FFFFFF',
-  marginBottom:3,
-    },
-  });
-  
-  export default OnboardingScreen;
+  container: {
+    flex: 1,
+    backgroundColor: '#0000001A',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: wp(5),
+  },
+  card: {
+    backgroundColor: '#fff',
+    paddingTop: hp(4),
+    paddingBottom: hp(4),
+    borderRadius: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: wp(80),
+    height: hp(70),
+    position: 'relative',
+  },
+  position: {
+    position: 'absolute',
+    bottom: hp(11.8),
+  },
+  flexDirection: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(0.5),
+  },
+  title: {
+    fontSize: wp(12),
+    color: 'black',
+    fontFamily: 'Nunito',
+    marginTop: hp(-5),
+  },
+  Image: {
+    width: wp(12),
+    height: hp(4.5),
+  },
+  brandName: {
+    fontSize: wp(12),
+    color: 'black',
+    fontFamily: 'Nunito',
+    paddingLeft: wp(2),
+  },
+  subtitle: {
+    fontSize: wp(4.5),
+    color: '#666',
+    textAlign: 'center',
+    marginTop: hp(1.5),
+    fontFamily: 'Nunito',
+    gap: hp(0.5),
+  },
+  pagination: {
+    flexDirection: 'row',
+    marginTop: hp(2.5),
+  },
+  dot: {
+    height: hp(1),
+    width: wp(2.5),
+    borderRadius: wp(1),
+    backgroundColor: '#CCC',
+    marginHorizontal: wp(1),
+  },
+  activeDot: {
+    backgroundColor: '#67940069',
+    width: wp(12.5),
+  },
+  arrowButton: {
+    marginTop: hp(2.5),
+    backgroundColor: '#67940069',
+    marginLeft: wp(8.75),
+    height: wp(12.5),
+    width: wp(12.5),
+    borderRadius: wp(6.25),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nextText: {
+    height: wp(8),
+    width: wp(8),
+    color: '#FFFFFF',
+    marginBottom: hp(0.5),
+  },
+});
+
+export default OnboardingScreen;

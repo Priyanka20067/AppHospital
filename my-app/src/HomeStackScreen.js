@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./HomeScreen"; 
 import ServicesScreen from "./ServicesScreen";
 import CategoriesPage from "./CategoriesPage";
+import DoctorList from "./DoctorList";
 
 const HomeStack = createStackNavigator();
 
@@ -12,17 +13,22 @@ export default function HomeStackScreen() {
       <HomeStack.Screen 
         name="Home" 
         component={HomeScreen} 
-        options={{ headerShown: false }}  // Hides header for the HomeScreen
+        options={{ headerShown: false }}  
       />
       <HomeStack.Screen 
         name="Categories" 
         component={CategoriesPage} 
-        options={{  headerShown: false}}  // Title for the Categories Page
+        options={{  headerShown: false}}  
       />
       <HomeStack.Screen 
         name="Services" 
         component={ServicesScreen} 
-        options={{  headerShown: false}}  // Title for the Services screen
+        options={{  headerShown: false}}  
+      />
+      <HomeStack.Screen 
+        name="DoctorList" 
+        component={DoctorList} 
+        options={{  headerShown: false}}  
       />
     </HomeStack.Navigator>
   );

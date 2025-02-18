@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const AppScreen = ({navigation}) => {
+const AppScreen = ({ navigation }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
@@ -60,7 +61,7 @@ const AppScreen = ({navigation}) => {
           style={styles.arrowButton}
           onPress={() => navigation.navigate('Main')}
         >
-         <Image source={require('../assets/image/Arrow.png')} style={styles.nextText} />
+          <Image source={require('../assets/image/Arrow.png')} style={styles.nextText} />
         </TouchableOpacity>
       </View>
     </View>
@@ -69,129 +70,116 @@ const AppScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 3 ,
+    flex: 1,
     backgroundColor: '#0000001A',
     justifyContent: 'center',
     alignItems: 'center',
-    padding:20,
-   fontFamily:'Nunito',
-    
+    padding: wp(5),
+    fontFamily: 'Nunito',
   },
-topRightContainer: {
-  display:'flex',
-  flexDirection: 'row',
-  alignItems: 'center', 
- marginTop:-90,
- padding:30,
-  
-},
-arrow: {
-  height:32,
-   width:34,
-   display:'block',
-   marginRight:255,
-   marginLeft:-10,  
-},
-skip: {
-
-  fontSize: 18,
-  color: 'black', 
-  
-},
+  topRightContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(-10),
+    padding: wp(7.5),
+  },
+  arrow: {
+    height: hp(4),
+    width: wp(8.5),
+    display: 'block',
+    marginRight: wp(63),
+    marginLeft: wp(-2.5),
+  },
+  skip: {
+    fontSize: wp(4.5),
+    color: 'black',
+  },
   card: {
-    backgroundColor:'#fff',
-    paddingTop:80,
-    
-    borderRadius: 32,
+    backgroundColor: '#fff',
+    paddingTop: hp(10),
+    borderRadius: wp(8),
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf:'center',
-    width: 320,
-    height:560,
-    gap:16,
-    position:'relative',
+    alignSelf: 'center',
+    width: wp(80),
+    height: hp(70),
+    gap: hp(2),
+    position: 'relative',
   },
-position:{
-  position:'absolute',
-  bottom:75,
-  
-},
-title: {
-  fontSize: 16,
-  fontWeight: '600',
-  color: '#000',
-  textAlign: 'center',
-  marginBottom: 10,
-  marginTop:-20,
-},
-subtitle: {
-  fontSize: 24,
-  fontWeight: 'bold',
-  color: '#000',
-  textAlign: 'center',
-  marginTop:-20,
-},
-
-
-option: {
-  backgroundColor: '#FFF',
-  gap:12,
-  padding: 16,
-  borderRadius: 32,
-  marginBottom: 15,
-  
-  borderWidth: 1,
-  width:288,
-  borderColor: '#DADADA',
-},
-selectedOption: {
-  borderColor: '#8DBF7C',
-  backgroundColor: '#EAF4EA',
-},
-optionText: {
-  fontSize: 18,
-  textAlign: 'center',
-  color: '#000',
-},
-selectedOptionText: {
-  color: '#4CAF50',
-  fontWeight: 'bold',
-},
-pagination: {
-  flexDirection: 'row',
-  marginTop: 20,
-},
-dot: {
-  height: 8,
-  width: 10,
-  borderRadius: 4,
-  backgroundColor: '#CCC',
-  marginHorizontal: 5,
-},
-activeDot: {
-  backgroundColor: '#67940069',
-  width:50,
-},
-arrowButton: {
-  marginTop: 20,
-  backgroundColor: '#67940069', 
-  marginLeft:35,
-  height: 50,
-  width: 50,
-  borderRadius: 25,
-  justifyContent:'center',
-  alignItems:'center',
-  
-},
-nextText: {
-  height:32,
-  width:32,
-  color: '#FFFFFF',
-  marginBottom:3,
- 
-
-},
-
+  position: {
+    position: 'absolute',
+    bottom: hp(11.3),
+  },
+  title: {
+    fontSize: wp(4),
+    fontWeight: '600',
+    color: '#000',
+    textAlign: 'center',
+    marginBottom: hp(1.5),
+    marginTop: hp(-2.5),
+  },
+  subtitle: {
+    fontSize: wp(6),
+    fontWeight: 'bold',
+    color: '#000',
+    textAlign: 'center',
+    marginTop: hp(-2.5),
+  },
+  option: {
+    backgroundColor: '#FFF',
+    gap: hp(1.5),
+    padding: wp(4),
+    borderRadius: wp(8),
+    marginBottom: hp(2),
+    borderWidth: 1,
+    width: wp(72),
+    borderColor: '#DADADA',
+  },
+  selectedOption: {
+    borderColor: '#8DBF7C',
+    backgroundColor: '#EAF4EA',
+  },
+  optionText: {
+    fontSize: wp(4.5),
+    textAlign: 'center',
+    color: '#000',
+  },
+  selectedOptionText: {
+    color: '#4CAF50',
+    fontWeight: 'bold',
+  },
+  pagination: {
+    flexDirection: 'row',
+    marginTop: hp(2.5),
+  },
+  dot: {
+    height: hp(1),
+    width: wp(2.5),
+    borderRadius: wp(1),
+    backgroundColor: '#CCC',
+    marginHorizontal: wp(1.25),
+  },
+  activeDot: {
+    backgroundColor: '#67940069',
+    width: wp(12.5),
+  },
+  arrowButton: {
+    marginTop: hp(2.5),
+    backgroundColor: '#67940069',
+    marginLeft: wp(8.75),
+    height: wp(12.5),
+    width: wp(12.5),
+    borderRadius: wp(6.25),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nextText: {
+    height: wp(8),
+    width: wp(8),
+    color: '#FFFFFF',
+    marginBottom: hp(0.5),
+  },
 });
 
 export default AppScreen;

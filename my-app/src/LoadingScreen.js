@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
+import { Dimensions } from 'react-native';
+
+
+const { width, height } = Dimensions.get('window');
+
 
 
 const LoadingScreen = ({ navigation}) => {

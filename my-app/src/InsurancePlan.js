@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const InsurancePlan = ({navigation}) => {
+const InsurancePlan = ({ navigation }) => {
   const [selectedPlan, setSelectedPlan] = useState('');
 
   const insurancePlans = [
-    'HDFC ERGO',
-    'Care Health Insurance',
-    'Aditya Birla Health Insurance',
-    'ICICI Lombard',
-    'Others',
-    'None',
+    'HDFC ERGO ',
+    'Care Health Insurance ',
+    'Aditya Birla Health Insurance  ',
+    'ICICI Lombard  ',
+    'Others ',
+    'None ',
   ];
 
   const handleSubmit = () => {
     if (selectedPlan) {
-      Alert.alert('Selected Plan', `You have selected: ${selectedPlan}`);
+      Alert.alert('Selected Plan',` You have selected: ${selectedPlan}`);
+      navigation.navigate("InsurancePlanStack");
+
     } else {
       Alert.alert('Error', 'Please select an insurance plan.');
     }
@@ -24,15 +27,16 @@ const InsurancePlan = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-        {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="arrow-back-outline" size={24} color="#333" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon name="search-outline" size={24} color="#333" />
-          </TouchableOpacity>
-        </View>
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-back-outline" size={hp(3)} color="#333" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name="search-outline" size={hp(3)} color="#333" />
+        </TouchableOpacity>
+      </View>
+
       <Text style={styles.title}>Insurance Plan</Text>
       <Text style={styles.subtitle}>Select your Insurance Plan</Text>
 
@@ -55,7 +59,7 @@ const InsurancePlan = ({navigation}) => {
         </TouchableOpacity>
       ))}
 
-      <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('InsuranceStack')}>
+      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
         <Text style={styles.submitButtonText}>Submit</Text>
       </TouchableOpacity>
     </View>
@@ -66,71 +70,72 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
+    paddingHorizontal: wp(5),
+    paddingTop: hp(2),
   },
-    // Header Styles
-    header: {
+  // Header Styles
+  header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 16,
+    paddingHorizontal: wp(4),
+    paddingTop: hp(3),
+    paddingBottom: hp(2),
     backgroundColor: "#FFF",
-    marginTop:-10,
   },
   title: {
-    fontSize: 38,
+    fontSize: hp(4.5),
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: hp(2),
     textAlign: 'center',
-    
   },
   subtitle: {
-    fontSize: 26,
+    fontSize: hp(2.9),
     color: '#555',
-    marginBottom: 20,
+    marginBottom: hp(2),
     textAlign: 'center',
   },
   option: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f9f9f9',
-    borderRadius: 37.03,
-    padding: 15,
-    marginBottom: 10,
+    borderRadius: wp(10),
+    paddingVertical: hp(2),
+    paddingHorizontal: wp(4),
+    marginBottom: hp(1.5),
     borderWidth: 1,
     borderColor: '#ddd',
-    height:67.3
   },
   selectedOption: {
     borderColor: '#28a745',
     backgroundColor: '#f0fff0',
   },
   radioCircle: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+    width: wp(5),
+    height: wp(5),
+    borderRadius: wp(2.5),
     borderWidth: 1,
     borderColor: '#28a745',
-    marginRight: 10,
+    marginRight: wp(3),
   },
   selectedRadioCircle: {
     backgroundColor: '#28a745',
   },
   optionText: {
-    fontSize: 16,
+    fontSize: hp(2.2),
   },
   submitButton: {
     backgroundColor: '#28a745',
-    paddingVertical: 15,
-    borderRadius: 18,  
+    paddingVertical: hp(2),
+    borderRadius: wp(6),
     alignItems: 'center',
-    marginTop: 20,
-    width:263,
-    marginLeft:25,
+    marginTop: hp(2),
+    alignSelf: 'center',
+    width: wp(70),
   },
   submitButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: hp(2.2),
     fontWeight: 'bold',
   },
 });

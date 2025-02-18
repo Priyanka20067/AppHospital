@@ -1,36 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const services = [
-  {
-    id: '1',
-    title: 'Locate & Book Cabs',
-    image: 'https://i.imgur.com/c9WVtb8.png',
-    icon: 'car',
-    rating: 5,
-  },
-  {
-    id: '2',
-    title: 'Book An Appointment',
-    image: 'https://i.imgur.com/8oHwDwY.png',
-    icon: 'medical',
-    rating: 4,
-  },
-  {
-    id: '3',
-    title: 'Find Doctors',
-    image: 'https://i.imgur.com/c9WVtb8.png',
-    icon: 'search',
-    rating: 4.5,
-  },
-  {
-    id: '4',
-    title: 'Order Medicines',
-    image: 'https://i.imgur.com/8oHwDwY.png',
-    icon: 'medkit',
-    rating: 4.2,
-  },
+  { id: '1', title: 'Locate & Book Cabs', image: 'https://i.imgur.com/c9WVtb8.png', icon: 'car', rating: 5 },
+  { id: '2', title: 'Book An Appointment', image: 'https://i.imgur.com/8oHwDwY.png', icon: 'medical', rating: 4 },
+  { id: '3', title: 'Find Doctors', image: 'https://i.imgur.com/c9WVtb8.png', icon: 'search', rating: 4.5 },
+  { id: '4', title: 'Order Medicines', image: 'https://i.imgur.com/8oHwDwY.png', icon: 'medkit', rating: 4.2 },
 ];
 
 const ServiceCard = ({ service }) => {
@@ -39,17 +16,9 @@ const ServiceCard = ({ service }) => {
   return (
     <View style={styles.card}>
       <View style={styles.imageContainer}>
-        <TouchableOpacity
-          style={styles.likeButton}
-          onPress={() => setLiked(!liked)}
-        >
-          <Icon
-            name={liked ? 'heart' : 'heart-outline'} // Using valid Ionicons
-            size={32}
-            color="#FF0000"
-          />
+        <TouchableOpacity style={styles.likeButton} onPress={() => setLiked(!liked)}>
+          <Icon name={liked ? 'heart' : 'heart-outline'} size={hp(3)} color="#FF0000" />
         </TouchableOpacity>
-
         <Image source={{ uri: service.image }} style={styles.image} />
       </View>
 
@@ -58,7 +27,7 @@ const ServiceCard = ({ service }) => {
           <Icon
             key={index}
             name="star"
-            size={18}
+            size={hp(2.5)}
             color={index < Math.floor(service.rating) ? '#FFD700' : '#E0E0E0'}
           />
         ))}
@@ -67,7 +36,7 @@ const ServiceCard = ({ service }) => {
       <View style={styles.cardContent}>
         <Text style={styles.title}>{service.title}</Text>
         <TouchableOpacity style={styles.iconButton}>
-          <Icon name={service.icon} size={24} color="white" />
+          <Icon name={service.icon} size={hp(3)} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -83,10 +52,10 @@ const ServicesScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back" size={24} color="#333" /> 
+          <Icon name="arrow-back" size={hp(3)} color="#333" />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleSearchPress}>
-          <Icon name="search" size={24} color="#333" /> 
+          <Icon name="search" size={hp(3)} color="#333" />
         </TouchableOpacity>
       </View>
 
@@ -106,29 +75,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    padding: 16,
+    padding: wp(4),
   },
-
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
+    padding: wp(4),
     backgroundColor: '#FFF',
   },
   textca: {
-    fontSize: 38,
-    fontFamily: 'Poppins',
+    fontSize: hp(4),
+    fontWeight: 'bold',
     textAlign: 'center',
-    marginVertical: 16,
+    marginVertical: hp(2),
   },
   list: {
-    paddingBottom: 16,
+    paddingBottom: hp(2),
   },
   card: {
     backgroundColor: 'white',
-    borderRadius: 8,
-    marginBottom: 16,
+    borderRadius: wp(2),
+    marginBottom: hp(2),
     overflow: 'hidden',
     elevation: 4,
   },
@@ -137,35 +105,35 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 150,
+    height: hp(20),
   },
   likeButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
-    padding: 6,
+    top: hp(1.5),
+    right: wp(3),
+    padding: wp(2),
     elevation: 3,
     zIndex: 1,
   },
   ratingContainer: {
     flexDirection: 'row',
-    marginTop: 8,
-    paddingLeft: 16,
+    marginTop: hp(1),
+    paddingLeft: wp(4),
   },
   cardContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    padding: wp(4),
   },
   title: {
-    fontSize: 18,
+    fontSize: hp(2.5),
     fontWeight: 'bold',
   },
   iconButton: {
     backgroundColor: '#4CAF50',
-    padding: 8,
-    borderRadius: 16,
+    padding: hp(1),
+    borderRadius: wp(4),
   },
 });
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const categories = [
   { id: '1', name: 'Neurologist', image: require('../assets/image/Neurology.png') },
@@ -43,10 +44,10 @@ export default function CategoriesPage({ navigation }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back-outline" size={24} color="#333" />
+          <Icon name="arrow-back-outline" size={wp(6)} color="#333" />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleSearchPress}>
-          <Icon name="search-outline" size={24} color="#333" />
+          <Icon name="search-outline" size={wp(6)} color="#333" />
         </TouchableOpacity>
       </View>
 
@@ -67,49 +68,49 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
-    paddingHorizontal: 16,
-    paddingTop: 20,
+    paddingHorizontal: wp(4),
+    paddingTop: hp(2),
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 16,
+    padding: wp(4),
     backgroundColor: "#FFF",
   },
   textca: {
-    fontSize: 38,
+    fontSize: wp(10),
     fontFamily: 'Poppins',
     textAlign: 'center',
-    marginVertical: 16,
+    marginVertical: hp(2),
   },
   grid: {
     alignItems: "center",
     justifyContent: "center",
   },
   card: {
-    width: 65,
-    height: 80,
-    margin: 8,
-    padding: 10,
+    width: wp(20),
+    height: hp(12),
+    margin: wp(2),
+    padding: wp(2),
     alignItems: 'center',
   },
   cardBg: {
     backgroundColor: '#D9D9D9',
-    borderRadius: 60,
-    width: 60,
-    height: 60,
+    borderRadius: wp(15),
+    width: wp(15),
+    height: wp(15),
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: wp(2),
   },
   icon: {
-    width: 40,
-    height: 40,
-    marginBottom: 8,
+    width: wp(10),
+    height: wp(10),
+    marginBottom: hp(1),
   },
   text: {
-    fontSize: 12,  
+    fontSize: wp(2.4),
     fontWeight: "700",
     color: "black",
     textAlign: "center",

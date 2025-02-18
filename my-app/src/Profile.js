@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Profile = ({ navigation }) => {
   return (
@@ -44,7 +45,7 @@ const Profile = ({ navigation }) => {
         {/* Biography Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>About The Doctor:</Text>
-          <Text style={styles.text}>
+          <Text style={styles.para}>
             A doctor's biography can include their professional experience, achievements, and areas
             of specialization. A doctor’s biography can also include personal information, such as
             their interests and hobbies.
@@ -62,7 +63,7 @@ const Profile = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity >
                   <View style={styles.touch}>
-                    <Image style={styles.linein}  source={require('../assets/image/Line28.png')}/>
+                    <Image style={styles.line}  source={require('../assets/image/Line28.png')}/>
                     <Image  style={styles.imagecontent} source={require("../assets/image/awards.png")}/>
                   </View>
                   <View style={styles.icontext}>
@@ -71,7 +72,7 @@ const Profile = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity >
                   <View style={styles.touch}>
-                    <Image style={styles.linein}  source={require('../assets/image/Line28.png')}/>
+                    <Image style={styles.line}  source={require('../assets/image/Line28.png')}/>
                     <Image  style={styles.imagecontent} source={require("../assets/image/surgeries.png")}/>
                   </View>
                   <View style={styles.icontext}>
@@ -80,7 +81,7 @@ const Profile = ({ navigation }) => {
                 </TouchableOpacity>
                <TouchableOpacity >
                   <View style={styles.touch}>
-                    <Image style={styles.linein}  source={require('../assets/image/Line28.png')}/>
+                    <Image style={styles.line}  source={require('../assets/image/Line28.png')}/>
                     <Image  style={styles.imagecontent} source={require("../assets/image/reviews.png")}/>
                     <Image style={styles.line}  source={require('../assets/image/Line28.png')}/>
                   </View>
@@ -176,130 +177,131 @@ const Profile = ({ navigation }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    padding:wp('3%'),
   },
   scrollContent: {
-    paddingBottom: 100, 
+    paddingBottom: hp('10%'),
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
+    padding: wp('4%'),
     backgroundColor: 'white',
   },
   profileContainer: {
     alignItems: 'center',
-    marginBottom: 20,
     flexDirection: 'row',
-    marginLeft: 19,
-    marginTop: 20,
+    marginLeft: wp('5%'),
+    marginTop: hp('2%'),
   },
-  columns: {
-    marginLeft: 19,
+  image: {
+    width: wp('30%'),
+    height: wp('30%'),
+    borderRadius: wp('15%'),
+    marginBottom: hp('1%'),
   },
-  image: { width: 120, height: 120, borderRadius: 60, marginBottom: 10 },
-  name: { fontSize: 28, fontWeight: 'bold', color: '#333' ,fontFamily:'Poppins', },
-  specialization: { fontSize: 16.12, color: '#000000' , fontFamily:'Poppins',},
-  experience: { fontSize: 13.12, color: '#666', marginVertical: 5   , fontFamily:'Poppins',},
-  experienceSub: { width: 194 },
-  rating: { fontSize: 13.6, color: '#FFD700' },
-  tags: { marginLeft: 19 ,fontSize:16,fontFamily:'Montserrat',  fontWeight: 'bold', },
+  name: {
+    fontSize: wp('6%'),
+    fontWeight: 'bold',
+    color: '#333',
+    fontFamily: 'Poppins',
+  },
+  specialization: {
+    fontSize: wp('4%'),
+    color: '#000000',
+    fontFamily: 'Poppins',
+  },
+  experience: {
+    fontSize: wp('3.5%'),
+    color: '#666',
+    marginVertical: hp('0.5%'),
+    fontFamily: 'Poppins',
+  },
+  rating: {
+    fontSize: wp('4%'),
+    color: '#FFD700',
+  },
   tagsContainer: {
-    display:'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignSelf:'center' ,
-    alignItems:'center',
-    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp('1%'),
+  },
+  tags:{
+    fontWeight:'bold',
   },
   tag: {
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'black',
-    padding: 8,
-    borderRadius: 16,
-    marginHorizontal: 5,
-    fontSize: 13,
-    width:105,
-    fontFamily:'Montserrat',
+    padding: hp('1%'),
+    borderRadius: wp('5%'),
+    marginHorizontal: wp('1.5%'),
+    fontSize: wp('3.5%'),
+    width: wp('28%'),
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
   },
-
-  iconsRow: {
-  display:'flex',
-  flexDirection:'row',
-  justifyContent:'center',
-  alignItems:'center',
-  marginTop:-30,
+  sectionTitle:{
+    fontWeight:'bold',
+  },
+  para:{
+   fontSize:hp('1.5%'),
+   marginHorizontal:wp(2),
   },
   touch:{
-  display:'flex',
-  flexDirection:'row',
-  justifyContent:'center',
-  alignItems:'center',
-  },
-  line:{
-    width:30,
-    marginHorizontal:10,
-    marginTop:30,
-    height:2,
-  },
-  linein:{
-    width:40,
-    marginHorizontal:10,
-    marginTop:30,
-    height:2,
+    flexDirection:'row',
+    alignItems:'center',
   },
   imagecontent:{
-    height:40,
-    width:40,
-    marginTop:30,
-    marginLeft:-10,
-    marginRight:-10,
+   width:wp('15%'),
+   height:wp('15%'),
+  },
+  line:{
+    width:wp('8%'),
+  },
+  iconsRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp('2%'),
   },
   icontext:{
-    display:'flex',
     justifyContent:'space-between',
-    alignContent:'space-between',
     alignItems:'center',
-    
-  },
-  icon: {
-    fontSize: 14,
-    color: 'gray',
-    marginRight:-10,
-  },
-  
-  section: { marginVertical: 10, marginLeft: 19 },
-  sectionTitle: { fontSize: 16, fontWeight: 'bold', color: '#333' ,fontFamily:'Montserrat', },
-  innertext:{
-    display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    marginRight:15,
-  },
-  text: { fontSize: 14.12, color: '#A09E9E', marginVertical: 2,fontFamily:'Poppins', },
-  footer: { alignItems: 'center', marginTop: 2 },
-  feese:{
-    display:'flex',
-    flexDirection:'row',
-    alignItems:'center',
-  },
-  fee: { fontSize: 18, fontWeight: 'bold', color: '#333' },
-  feetext:{
-   color:'green',
   },
   button: {
     backgroundColor: '#4CAF50',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 18,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('3%'),
+    borderRadius: wp('5%'),
+    width:wp('50%'),
+    justifyContent:'center',
+    marginVertical:wp('5%'),
+    alignSelf:'center',
   },
-  buttonText: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
+  buttonText: {
+    color: '#FFF',
+    fontSize: wp('4.5%'),
+    fontWeight: 'bold',
+  },
+  innertext:{
+  flexDirection:'row',
+  justifyContent:'space-between',
+  paddingVertical:wp('1%')
+  },
+  feese:{
+    flexDirection:'row',
+  justifyContent:'space-between',
+  },
+  feetext:{
+   color:'#4CAF50'
+  },
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -310,20 +312,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    paddingVertical: 10,
-  },
-  navButton: {
-    alignItems: 'center',
+    paddingVertical: hp('1.5%'),
   },
   navIcon: {
-    width: 24,
-    height: 24,
+    width: wp('6%'),
+    height: wp('6%'),
     resizeMode: 'contain',
   },
   navButtonText: {
-    fontSize: 12,
+    fontSize: wp('3%'),
     color: '#000',
-    marginTop: 4,
+    marginTop: hp('0.5%'),
   },
 });
 

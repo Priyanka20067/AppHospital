@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const JoinScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topRightContainer}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image source={require('../assets/image/Icons.png')} style={styles.arrow} />
         </TouchableOpacity>
         <Text style={styles.skip} onPress={() => navigation.navigate('LoginStack')}>Skip</Text>
@@ -18,7 +19,7 @@ const JoinScreen = ({ navigation }) => {
           New to Niramaya? <Text style={styles.link}>Join Now</Text>
         </Text>
         <Text style={styles.textsub}>
-          Already a user? <Text style={styles.link}  onPress={() => navigation.navigate('Home')}>Sign In</Text>
+          Already a user? <Text style={styles.link} onPress={() => navigation.navigate('Home')}>Sign In</Text>
         </Text>
       </View>
       <View style={styles.position}>
@@ -41,115 +42,105 @@ const JoinScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 3 ,
-      backgroundColor: '#0000001A',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding:20,
-      fontFamily:'Nunito',
-    },
-topRightContainer: {
-  display:'flex',
-  flexDirection: 'row',
-  alignItems: 'center', 
- marginTop:-90,
- padding:30,
-  
-},
-arrow: {
-  height:32,
-   width:34,
-   display:'block',
-   marginRight:255,
-   marginLeft:-10,  
-},
-skip: {
-
-  fontSize: 18,
-  color: 'black', 
-  
-},
-    card: {
-      backgroundColor:'#fff', 
-      borderRadius: 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignSelf:'center',
-      width: 320,
-      height:560,
-      gap:16,
-      position:'relative',
-    },
-  position:{
-    position:'absolute',
-    bottom:76,
-    
+    flex: 1,
+    backgroundColor: '#0000001A',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: wp(5),
+    fontFamily: 'Nunito',
   },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
+  topRightContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(-10),
+    padding: wp(7.5),
   },
-
+  arrow: {
+    height: hp(4),
+    width: wp(8.5),
+    display: 'block',
+    marginRight: wp(63),
+    marginLeft: wp(-2.5),
+  },
+  skip: {
+    fontSize: wp(4.5),
+    color: 'black',
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: wp(80),
+    height: hp(70),
+    gap: hp(2),
+    position: 'relative',
+  },
+  position: {
+    position: 'absolute',
+    bottom: hp(11.4),
+  },
   image: {
-    width: 230,
-    height: 230,
-   marginTop:-120,
+    width: wp(57.5),
+    height: wp(57.5),
+    marginTop: hp(-15),
   },
   heading: {
-    fontSize: 24,
-    marginBottom: 5,
-    letterSpacing:0.5,
+    fontSize: wp(6),
+    marginBottom: hp(0.5),
+    letterSpacing: wp(0.1),
   },
   headingsub: {
-    fontSize: 24,
-    marginTop: -20,
-   letterSpacing:0.5,
+    fontSize: wp(6),
+    marginTop: hp(-2.5),
+    letterSpacing: wp(0.1),
   },
   text: {
-    fontSize: 14,
+    fontSize: wp(3.5),
     color: '#555',
-    marginBottom: 4,
+    marginBottom: hp(0.5),
   },
   textsub: {
-    fontSize: 14,
+    fontSize: wp(3.5),
     color: '#555',
-   marginTop:-18,
+    marginTop: hp(-2.5),
   },
   link: {
     color: '#007BFF',
-    textDecorationLine:'underline',
+    textDecorationLine: 'underline',
   },
   pagination: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: hp(2.5),
   },
   dot: {
-    height: 8,
-    width: 10,
-    borderRadius: 4,
+    height: hp(1),
+    width: wp(2.5),
+    borderRadius: wp(1),
     backgroundColor: '#CCC',
-    marginHorizontal: 5,
+    marginHorizontal: wp(1.25),
   },
   activeDot: {
     backgroundColor: '#67940069',
-    width:50,
+    width: wp(12.5),
   },
   arrowButton: {
-    marginTop: 20,
-    backgroundColor: '#67940069', 
-    marginLeft:35,
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    justifyContent:'center',
-    alignItems:'center',
-    
+    marginTop: hp(2.5),
+    backgroundColor: '#67940069',
+    marginLeft: wp(8.75),
+    height: wp(12.5),
+    width: wp(12.5),
+    borderRadius: wp(6.25),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   nextText: {
-    height:32,
-  width:32,
-  color: '#FFFFFF',
-  marginBottom:3,
+    height: wp(8),
+    width: wp(8),
+    color: '#FFFFFF',
+    marginBottom: hp(0.5),
   },
 });
 

@@ -7,7 +7,8 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const hospitals = [
   {
@@ -18,8 +19,8 @@ const hospitals = [
     rating: '★★★★★',
     reviews: '150+',
     logos: [
-      require('../assets/image/icic.png'), 
-      require('../assets/image/hdfc.png'), 
+      require('../assets/image/icic.png'),
+      require('../assets/image/hdfc.png'),
     ],
   },
   {
@@ -64,10 +65,9 @@ const HospitalCard = ({ hospital, navigation }) => (
   <View style={styles.card}>
     <View style={styles.cardContent}>
       <View style={styles.leftSection}>
-        {/* Replace this line with a local hospital image */}
         <Image
           style={styles.hospitalImage}
-          source={require('../assets/image/image1.png')} // Replace with your local image
+          source={require('../assets/image/image1.png')}
         />
         <View style={styles.details}>
           <Text style={styles.hospitalName}>{hospital.name}</Text>
@@ -89,8 +89,8 @@ const HospitalCard = ({ hospital, navigation }) => (
             <Image key={index} style={styles.logo} source={logo} />
           ))}
         </View>
-        <TouchableOpacity 
-          style={styles.bookButton} 
+        <TouchableOpacity
+          style={styles.bookButton}
           onPress={() => navigation.navigate('InsurancePlanStack')}
         >
           <Text style={styles.bookButtonText}>Book Now</Text>
@@ -111,14 +111,13 @@ const HospitalCard = ({ hospital, navigation }) => (
 const InsurancePlanScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* Header with Back and Search Icons */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.iconButton} onPress={()=> navigation.goBack() }>
-          <Ionicons name="arrow-back" size={24} color="#000" />
+        <TouchableOpacity style={styles.iconButton} onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={wp(6)} color="#000" />
         </TouchableOpacity>
         <Text style={styles.title}>Insurance Plan</Text>
         <TouchableOpacity style={styles.iconButton}>
-          <Ionicons name="search" size={24} color="#000" />
+          <Ionicons name="search" size={wp(6)} color="#000" />
         </TouchableOpacity>
       </View>
 
@@ -129,7 +128,7 @@ const InsurancePlanScreen = ({ navigation }) => {
         data={hospitals}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <HospitalCard hospital={item} navigation={navigation} />}
-        contentContainerStyle={{ paddingBottom: 80 }}
+        contentContainerStyle={{ paddingBottom: hp(10) }}
       />
       <View style={styles.navBar}>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
@@ -176,50 +175,50 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 60, // Add padding to push content down below the header
+    paddingTop: hp(6), // Responsive padding
   },
   header: {
-    position: 'absolute', // Make header fixed at the top
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(4),
     backgroundColor: '#fff',
-    zIndex: 1, // Ensure header is above other content
-    paddingTop: 10, // Add padding to prevent overlap with status bar
+    zIndex: 1,
+    paddingTop: hp(2),
   },
   iconButton: {
-    padding: 8,
+    padding: wp(2),
   },
   title: {
-    fontSize: 34,
+    fontSize: wp(8),
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 50, // Fixed typo
+    marginTop: hp(6),
   },
   subtitle: {
-    fontSize: 15,
-    marginLeft:23,
-    marginTop:50,
-    marginBottom: 50,
-    width: '390',
-    fontWeight: 'semibold',
+    fontSize: wp(4),
+    marginLeft: wp(6),
+    marginTop: hp(6),
+    marginBottom: hp(6),
+    width: wp(90),
+    fontWeight: '600',
     color: 'black',
   },
   card: {
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: wp(2),
     borderColor: '#ccc',
-    marginHorizontal: 16,
-    marginBottom: 16,
+    marginHorizontal: wp(4),
+    marginBottom: hp(2),
     backgroundColor: '#f9f9f9',
   },
   cardContent: {
     flexDirection: 'row',
-    padding: 8,
+    padding: wp(2),
   },
   leftSection: {
     flex: 2,
@@ -230,79 +229,79 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   hospitalImage: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 8,
+    width: wp(15),
+    height: wp(15),
+    borderRadius: wp(7.5),
+    marginRight: wp(2),
   },
   details: {
     justifyContent: 'space-between',
   },
   hospitalName: {
-    fontSize: 16,
+    fontSize: wp(4),
     fontWeight: 'bold',
   },
   services: {
-    fontSize: 11,
+    fontSize: wp(3),
     color: '#000000',
   },
   experience: {
-    fontSize: 10,
+    fontSize: wp(2.8),
     color: '#000000',
-    width: '129',
+    width: wp(32),
   },
   rating: {
-    fontSize: 14,
+    fontSize: wp(3.5),
     color: '#000',
   },
   reviews: {
     color: '#666',
   },
   star: {
-    color: '#E2A01D', // Make stars yellow
+    color: '#E2A01D',
   },
   logoRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: hp(1),
   },
   logo: {
-    width: 30,
-    height: 40,
+    width: wp(8),
+    height: hp(5),
     resizeMode: 'contain',
-    marginVertical: 5,
-    marginRight: 8,
-    marginLeft: 8,
+    marginVertical: hp(0.5),
+    marginRight: wp(2),
+    marginLeft: wp(2),
   },
   bookButton: {
-    marginTop: 5,
+    marginTop: hp(1),
     backgroundColor: '#679400',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    borderRadius: 30,
+    paddingVertical: hp(1.5),
+    paddingHorizontal: wp(4),
+    borderRadius: wp(7.5),
   },
   bookButtonText: {
     color: '#fff',
-    fontSize: 15,
+    fontSize: wp(3.5),
     textAlign: 'center',
   },
   cardActions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 8,
+    padding: wp(2),
   },
   actionButton: {
     flex: 1,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 20,
-    padding: 8,
-    marginHorizontal: 8,
+    borderRadius: wp(5),
+    padding: wp(2),
+    marginHorizontal: wp(2),
     alignItems: 'center',
     backgroundColor: '#A09E9E',
   },
   actionButtonText: {
-    fontSize: 14,
+    fontSize: wp(3.5),
     textAlign: 'center',
     color: 'white',
   },
@@ -316,20 +315,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    paddingVertical: 10,
+    paddingVertical: hp(1.5),
   },
   navButton: {
     alignItems: 'center',
   },
   navIcon: {
-    width: 24,
-    height: 24,
+    width: wp(6),
+    height: hp(3),
     resizeMode: 'contain',
   },
   navButtonText: {
-    fontSize: 12,
+    fontSize: wp(3),
     color: '#000',
-    marginTop: 4,
+    marginTop: hp(0.5),
   },
 });
 

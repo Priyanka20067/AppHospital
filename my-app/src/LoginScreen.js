@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, Alert, ImageBackground } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
-      <View style={styles.ImageBackground}>
-        <ImageBackground source={require('../assets/image/bg1.png')} style={styles.ImageBackground}></ImageBackground>
-      </View>
-      <View style={styles.arrow}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image source={require('../assets/image/Icons.png')} style={styles.arrow} />
-        </TouchableOpacity> 
-      </View>
-      <View>
-        <Image source={require('../assets/image/Niramaya.png')} style={styles.logo} />
-      </View>
+      {/* Background Image */}
+      <ImageBackground source={require('../assets/image/bg1.png')} style={styles.imageBackground} />
+
+      {/* Back Button */}
+      <TouchableOpacity style={styles.arrowContainer} onPress={() => navigation.goBack()}>
+        <Image source={require('../assets/image/Icons.png')} style={styles.arrow} />
+      </TouchableOpacity>
+
+      {/* Logo */}
+      <Image source={require('../assets/image/Niramaya.png')} style={styles.logo} />
 
       {/* Username Input */}
-      <Text style={styles.inputtext}>Username</Text>
-      <View style={styles.inputflex}>
-        <Image source={require('../assets/image/graterthan.png')} style={styles.inputimage} />
+      <Text style={styles.inputText}>Username : </Text>
+      <View style={styles.inputFlex}>
+        <Image source={require('../assets/image/graterthan.png')} style={styles.inputImage} />
         <TextInput
           style={styles.input}
           placeholder="Sample1_00"
@@ -32,14 +33,14 @@ const LoginScreen = () => {
           onChangeText={setUsername}
         />
       </View>
-      
+
       {/* Password Input */}
-      <Text style={styles.inputtext}>Password</Text>
-      <View style={styles.inputflex}>
-        <Image source={require('../assets/image/graterthan.png')} style={styles.inputimage} />
+      <Text style={styles.inputText}>Password : </Text>
+      <View style={styles.inputFlex}>
+        <Image source={require('../assets/image/graterthan.png')} style={styles.inputImage} />
         <TextInput
           style={styles.input}
-          placeholder="Sample1_00"
+          placeholder="****"
           placeholderTextColor="#777"
           secureTextEntry
           value={password}
@@ -48,8 +49,8 @@ const LoginScreen = () => {
       </View>
 
       {/* Forgot Password */}
-      <TouchableOpacity style={styles.boxforgotPassword}>
-        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      <TouchableOpacity style={styles.boxForgotPassword}>
+        <Text style={styles.forgotPassword}>Forgot Password?  </Text>
       </TouchableOpacity>
 
       {/* Login Button */}
@@ -57,17 +58,18 @@ const LoginScreen = () => {
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
 
-      {/* Sign Up Navigation */}
-      <View>
-        <ImageBackground source={require('../assets/image/bg2.png')} style={styles.ImageBackground1}></ImageBackground>
-      </View>
-      
-      <TouchableOpacity style={styles.boxsignupText}>
+      {/* Bottom Background Image */}
+      <ImageBackground source={require('../assets/image/bg2.png')} style={styles.imageBackground1} />
+
+      {/* Signup Link */}
+      <TouchableOpacity style={styles.boxSignupText}>
         <Text style={styles.signupText}>
-          Don’t have an account? <Text style={{ color: '#2C6E49' }} onPress={() => navigation.navigate('SignupStack')}>Sign Up</Text>
+          Don’t have an account?{' '}
+          <Text style={styles.signupLink} onPress={() => navigation.navigate('SignupStack')}>
+            Sign Up
+          </Text>
         </Text>
       </TouchableOpacity>
-      
     </View>
   );
 };
@@ -78,90 +80,92 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F9FAF8',
-    padding:20,
+    padding: wp(5),
   },
-  ImageBackground:{
-    display:'flex',
-    flexDirection:'column',
-    width:435,
-    height:260,
-    position:'relative',
-    marginLeft:40,
-    marginTop:-10,
+  imageBackground: {
+    width: wp(100),
+    height: hp(30),
+    position: 'absolute',
+    top: 0,
+  },
+  arrowContainer: {
+    position: 'absolute',
+    top: hp(5),
+    left: wp(5),
   },
   arrow: {
-    width:42,
-    height:30,  
-    position:'absolute',
-    marginLeft:-150,
-    marginTop:-310,
+    width: wp(8),
+    height: hp(4),
   },
   logo: {
-    width: 243.22,
-    height: 159,
-    position:'absolute',
-    marginLeft:-120,
-    marginTop:-160,
+    width: wp(50),
+    height: hp(15),
+    marginBottom: hp(3),
   },
-  inputtext:{
-    fontSize:16,
-    alignSelf:'flex-start'
+  inputText: {
+    fontSize: wp(4),
+    alignSelf: 'flex-start',
+    marginBottom: hp(1),
   },
-  inputflex:{
-    display:'flex',
-    flexDirection:'row',
-    marginBottom:10,
-    marginLeft:5,
+  inputFlex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp(90),
+    marginBottom: hp(2),
   },
-  inputimage:{
-    width:11,
-    height:22,
-    alignSelf:'center',
+  inputImage: {
+    width: wp(4),
+    height: hp(2),
   },
   input: {
-    width: '100%',
-    height: 50,
+    flex: 1,
+    height: hp(6),
     borderColor: '#DDD',
     borderWidth: 1,
-    borderRadius: 8,
-    marginLeft:5,
-    paddingLeft: 10,
+    borderRadius: wp(2),
+    paddingLeft: wp(3),
     color: '#333',
+    fontSize: wp(4),
   },
-  boxforgotPassword:{
-    justifyContent:'flex-end',
-    alignSelf:'flex-end',
+  boxForgotPassword: {
+    alignSelf: 'flex-end',
+    marginRight: wp(5),
   },
   forgotPassword: {
-    marginTop:-10,
     color: '#0C2A92',
-    fontSize:10,
-    marginBottom: 20,
+    fontSize: wp(3),
+    marginBottom: hp(2),
   },
   loginButton: {
-    backgroundColor:'#679400',
-    width: '193',
-    padding: 12,
-    borderRadius: 20,
+    backgroundColor: '#679400',
+    width: wp(50),
+    paddingVertical: hp(2),
+    borderRadius: wp(5),
     alignItems: 'center',
-    
+    marginBottom: hp(3),
   },
   loginText: {
     color: '#FFF',
-    fontSize: 16,
+    fontSize: wp(4.5),
     fontWeight: 'bold',
   },
-  ImageBackground1:{
-    position:'relative',
-    width:435,
-    height:260,
-    marginBottom:-15,
+  imageBackground1: {
+    width: wp(100),
+    height: hp(30),
+    position: 'absolute',
+    bottom: 0,
+  },
+  boxSignupText: {
+    position: 'absolute',
+    bottom: hp(5),
   },
   signupText: {
     color: '#777',
-    position:'absolute',
-    marginLeft:-100,
-    marginTop:-80,
+    fontSize: wp(3.5),
+  },
+  signupLink: {
+    color: '#2C6E49',
+    fontWeight: 'bold',
   },
 });
 
